@@ -24,13 +24,13 @@ conn.alter_add_column('height')
 conn.delete('height')
 
 #updating key  with value<br>
-conn.update_with_where({'full_name':'hello world','age':'2222222222222222'},{'age':'2345'}) 
+conn.update_with_where({'full_name':'hello world','age':'22'},{'age':'2345'}) 
 
 #select and print multiple keys<br>
 conn.select_multiple(['full_name','age'])
 
 #selecting multiple keyc with condition<br>
-conn.select_multiple_with_where(['full_name','age'],{'age':'2222222222222222','full_name':'hello world'})
+conn.select_multiple_with_where(['full_name','age'],{'age':'22','full_name':'hello world'})
 
 #selecting all data with condition<br>
 conn.select_all_with_where({'full_name':'hello'})
