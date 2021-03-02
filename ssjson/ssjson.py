@@ -26,14 +26,14 @@ class connect:
         #print(file_size)
         if file_size!=0:
                 print('Table Already Created')
-                return False
+                #return False
                 
         json_object = json.dumps(data, indent = 4) 
         with open(self.filename+".json", "w") as outfile:
                 outfile.write(json_object)
                 outfile.close()
         print('New Table Created')
-        return True
+        #return True
 
 
     def insert(self,data):
@@ -47,7 +47,7 @@ class connect:
         for i in data:
             if i not in existing_data_keys:
                 print('Cannot Insert !!!, Keys Mismatch')
-                return False
+                #return False
 
 
         remaining_list = list(set(existing_data_keys) - set(list(data)))
@@ -63,7 +63,7 @@ class connect:
                 outfile.write(json_object)
                 outfile.close()
         print('One Entry Inserted')
-        return True
+        #return True
 
 
     def alter_rename_column(self,old_key,new_key):
@@ -76,7 +76,7 @@ class connect:
                 existing_data_keys.append(key)
         if old_key not in existing_data_keys:
                 print('Cannot Insert!!!, Key Not Present')
-                return False
+                #return False
 
 
         #updating old key to new key        
@@ -90,7 +90,7 @@ class connect:
                 outfile.write(json_object)
                 outfile.close()
         print('Key Altered')
-        return True
+        #return True
 
     def alter_add_column(self,column_name):
         with open(self.filename+'.json', 'r') as openfile:
@@ -101,7 +101,7 @@ class connect:
                 existing_data_keys.append(key)
         if column_name in existing_data_keys:
                 print('Cannot Insert Column!!!, Already Exixts')
-                return False
+                #return False
 
         for i in json_object:
             i[column_name]=None
@@ -112,7 +112,7 @@ class connect:
                 outfile.write(json_object)
                 outfile.close()
         print('Column Added')
-        return True
+        #return True
 
 
     def delete(self,data):
@@ -124,7 +124,7 @@ class connect:
                 existing_data_keys.append(key)
         if data not in existing_data_keys:
                 print('Cannot Delete!!!, Key Not Present')
-                return False
+                #return False
 
         for i in json_object:
             del i[data]
@@ -135,7 +135,7 @@ class connect:
                 outfile.write(json_object)
                 outfile.close()
         print('Key Deleted')
-        return True
+        #return True
 
 
     def update_with_where(self,set_data,where_data):
@@ -149,12 +149,12 @@ class connect:
         for key,value in set_data.items():
                 if key not in list(json_object[0].keys()):
                         print('Cannot Update!!!, Set Key Not Present')
-                        return False
+                        #return False
 
         for key,value in where_data.items():
                 if key not in list(json_object[0].keys()):
                         print('Cannot Update!!!, Where Key Not Present')
-                        return False
+                        #return False
 
 
         found=False
@@ -171,7 +171,7 @@ class connect:
                                                         i[s_key]=s_value
         if found==False:
                 print('Cannot Found Any Match In Data!!! ')
-                return False
+                #return False
                                                         
 
         json_object = json.dumps(json_object, indent = 4)
@@ -180,7 +180,7 @@ class connect:
                 outfile.write(json_object)
                 outfile.close()
         print('Data Updated')
-        return True
+        #return True
 
 
     def select_multiple(self,select_list):
@@ -190,7 +190,7 @@ class connect:
         for i in select_list:
                 if i not in list(json_object[0].keys()):
                         print('Keys Not Present')
-                        return False
+                        #return False
 
         main_data=[]
 
@@ -205,7 +205,7 @@ class connect:
 
         for i in main_data:
                 print(i)
-        return True
+        #return True
 
 
     def select_multiple_with_where(self,select_list,where_dict):
@@ -215,12 +215,12 @@ class connect:
         for i in select_list:
                 if i not in list(json_object[0].keys()):
                         print('Select Keys Not Present')
-                        return False
+                        #return False
 
         for key,value in where_dict.items():
             if key not in list(json_object[0].keys()):
                 print('Where Keys Not Present')
-                return False
+                #return False
 
         main_data=[]
 
@@ -239,12 +239,12 @@ class connect:
 
         if found==False:
             print('Cannot Match Any Data With Where Condition!!! ')
-            return False
+            #return False
 
         for i in main_data:
             print(i)
                 
-        return True
+        #return True
 
 
 
@@ -255,7 +255,7 @@ class connect:
         for i in json_object:
             print(i)
                 
-        return True
+        #return True
 
 
 
@@ -267,7 +267,7 @@ class connect:
         for key,value in where_dict.items():
             if key not in list(json_object[0].keys()):
                 print('Where Keys Not Present')
-                return False
+                #return False
 
         main_data=[]
 
@@ -284,12 +284,12 @@ class connect:
 
         if found==False:
             print('Cannot Match Any Data With Where Condition!!! ')
-            return False
+            #return False
 
         for i in main_data:
             print(i)
                 
-        return True
+        #return True
 
 
 
@@ -323,11 +323,11 @@ class connect:
             else:
                 print('Invalid Create Table Command, Please Use Below Command As Example')
                 print('create table tablename(id text , name text , dob text)')
-                return False
+                #return False
         except:
             print('Invalid Create Table Command, Please Use Below Command As Example')
             print('create table tablename(id text , name text , dob text)')
-            return False
+            #return False
 
 
 
@@ -340,7 +340,7 @@ class connect:
             first_closing_bracket=query.find(')')
             if first_opening_bracket==-1 or first_closing_bracket==-1 or first_opening_bracket>first_closing_bracket:
                 print('Invalid query')
-                return False
+                #return False
             #print(query[first_opening_bracket+1:first_closing_bracket])
             keys=query[first_opening_bracket+1:first_closing_bracket]
             keys=keys.split(',')
@@ -354,13 +354,13 @@ class connect:
                 temp_query=query.split('values')[1]
             else:
                 print('invalid query')
-                return False
+                #return False
                 
             second_opening_bracket=temp_query.find('(')
             second_closing_bracket=temp_query.find(')')
             if second_opening_bracket==-1 or second_closing_bracket==-1 or second_opening_bracket>second_closing_bracket:
                 print('Invalid query')
-                return False
+                #return False
                 
             #print(temp_query[second_opening_bracket+1:second_closing_bracket])
             values=temp_query[second_opening_bracket+1:second_closing_bracket]
@@ -374,7 +374,7 @@ class connect:
         except:
             print('Invalid Insert Table Command, Please Use Below Command As Example')
             print('INSERT INTO artists (name,age) valuesss(Bud,22);')
-            return False
+            #return False
 
 
 
@@ -391,7 +391,7 @@ class connect:
         except:
             print('Invalid Alter Table Command, Please Use Below Command As Example')
             print('ALTER TABLE table_name RENAME COLUMN current_name TO new_name;')
-            return False
+            #return False
 
 
     def alter_add_column_query(self,query):
@@ -402,7 +402,7 @@ class connect:
         except:
             print('Invalid Alter Table Command, Please Use Below Command As Example')
             print('ALTER TABLE table_name ADD COLUMN COLUMN_NAME;')
-            return False
+            #return False
 
 
     def alter_drop_column_query(self,query):
@@ -413,7 +413,7 @@ class connect:
         except:
             print('Invalid Alter Table Command, Please Use Below Command As Example')
             print('ALTER TABLE table_name DROP COLUMN COLUMN_NAME;')
-            return False
+            #return False
 
 
     def update_with_where_query(self,query):
@@ -423,7 +423,7 @@ class connect:
             if len(temp_query_before_where)<1:
                 print('Invalid Query,Please Use Below Command As Example')
                 print('UPDATE tablename set id=23,name=abcd where name=pqrs')
-                return False
+                #return False
             
             set_data={}
             for i in temp_query_before_where:
@@ -436,7 +436,7 @@ class connect:
             if len(temp_query_before_where)!=2:
                 print('Invalid Query,Please Use Below Command As Example')
                 print('UPDATE tablename set id=23,name=abcd where name=pqrs')
-                return False
+                #return False
 
             where_json={temp_query_after_where[0].strip():temp_query_after_where[1].strip()}
             self.update_with_where(set_data,where_json)
@@ -444,7 +444,7 @@ class connect:
         except:
             print('Invalid Query,Please Use Below Command As Example')
             print('UPDATE tablename set id=23,name=abcd where name=pqrs')
-            return False
+            #return False
 
 
     def select_multiple_query(self,query):
@@ -454,7 +454,7 @@ class connect:
         except:
             print('Invalid Query,Please Use Below Command As Example')
             print('select id,name,dob from tablename')
-            return False
+            #return False
 
 
     def select_multiple_with_where_query(self,query):
@@ -465,7 +465,7 @@ class connect:
             if len(after_where)!=2:
                 print('Invalid Query,Please Use Below Command As Example')
                 print('select id,name,dob from tablename where name=sand')
-                return False
+                #return False
 
             where_dict={after_where[0].strip():after_where[1]}
             self.select_multiple_with_where(data,where_dict)
@@ -473,7 +473,7 @@ class connect:
         except:
             print('Invalid Query,Please Use Below Command As Example')
             print('select id,name,dob from tablename where name=sand')
-            return False
+            #return False
 
 
     def select_all_with_where_query(self,query):
@@ -482,7 +482,7 @@ class connect:
             if len(after_where)!=2:
                     print('Invalid Query,Please Use Below Command As Example')
                     print('select * from tablename where name=sand')
-                    return False
+                    #return False
             where_dict={after_where[0].strip():after_where[1]}
 
             self.select_all_with_where(where_dict)
@@ -490,7 +490,7 @@ class connect:
         except:
             print('Invalid Query,Please Use Below Command As Example')
             print('select * from tablename where name=sand')
-            return False
+            #return False
 
 
     def select_all_query(self,query):
@@ -505,7 +505,7 @@ class connect:
 
 
 
-    def call(self,query):
+    def execute(self,query):
         query=' '.join(query.split())
     
         if query.split(' ')[0].lower()=='create':
@@ -528,7 +528,7 @@ class connect:
             else:
                 print('Invalid Alter Command,Use Below As Example')
                 print('ALTER TABLE table_name ADD/DROP COLUMN COLUMN_NAME;\nALTER TABLE table_name RENAME COLUMN current_name TO new_name;')
-                return False
+                #return False
 
         if query.split(' ')[0].lower()=='update' and query.split()[2].lower()=='set':
             self.update_with_where_query(query)
@@ -549,6 +549,14 @@ class connect:
 
 
 
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
+
+
                 
 
 
@@ -564,7 +572,7 @@ class connect:
 
 # conn.delete('height')
 
-# conn.update_with_where({'full_name':'hello world','age':'2222222222222222'},{'age':'2345'})  #last wala main condition h
+# conn.update_with_where({'full_name':'hello world','age':'2222222222222222'},{'age':'2345'}) 
 
 # conn.select_multiple(['full_name','age'])
 
@@ -575,61 +583,58 @@ class connect:
 # conn.select_all()
 
 
-###note where works for or not and condition
 
 
 
+# conn = connect("testfile")
 
 
-conn = connect("testfile")
+# query="create table tablename(id text , name text , dob text)"
+# conn.execute(query)
 
 
-query="create table tablename(id text , name text , dob text)"
-conn.call(query)
+# print('--------------')
+# query="INSERT INTO tablename (full_name,dob) valuesss(Bud,22);"
+# conn.execute(query)
+
+# print('--------------')
+# query="ALTER TABLE table_name RENAME COLUMN full_name TO name;"
+# conn.execute(query)
 
 
-print('--------------')
-query="INSERT INTO tablename (full_name,dob) valuesss(Bud,22);"
-conn.call(query)
-
-print('--------------')
-query="ALTER TABLE table_name RENAME COLUMN full_name TO name;"
-conn.call(query)
+# print('--------------')
+# query="ALTER TABLE table_name ADD COLUMN code;"
+# conn.execute(query)
 
 
-print('--------------')
-query="ALTER TABLE table_name ADD COLUMN code;"
-conn.call(query)
+# print('--------------')
+# query="ALTER TABLE table_name DROP COLUMN code;"
+# conn.execute(query)
 
 
-print('--------------')
-query="ALTER TABLE table_name DROP COLUMN code;"
-conn.call(query)
+# print('--------------')
+# query="UPDATE tablename set dob=23,name=sand where name=Bud"
+# conn.execute(query)
 
 
-print('--------------')
-query="UPDATE tablename set dob=23,name=sand where name=Bud"
-conn.call(query)
+# print('--------------')
+# query="select id,name,dob from tablename"
+# conn.execute(query)
 
 
-print('--------------')
-query="select id,name,dob from tablename"
-conn.call(query)
+# print('--------------')
+# query="select id,name from tablename where name=sand"
+# conn.execute(query)
 
 
-print('--------------')
-query="select id,name from tablename where name=sand"
-conn.call(query)
+# print('--------------')
+# query="select * from tablename where name=sand"
+# conn.execute(query)
 
 
-print('--------------')
-query="select * from tablename where name=sand"
-conn.call(query)
-
-
-print('--------------')
-query="select * from tablename"
-conn.call(query)
+# print('--------------')
+# query="select * from tablename"
+# conn.execute(query)
 
 
 
