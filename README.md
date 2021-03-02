@@ -45,7 +45,7 @@ conn.select_all()
 
 
 
-# USUAGE Using SQL
+# USAGE Using SQL
 
 ## Below is the SQL query for all the operation happened above
 
