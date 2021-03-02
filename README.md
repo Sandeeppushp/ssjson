@@ -1,4 +1,4 @@
-# ssjson
+# SSJSON
 ssjson is JSON based python library with various json operation
 
 
@@ -57,46 +57,37 @@ query="create table tablename(id text , name text , dob text)"<br>
 conn.execute(query)<br>
 
 
-print('--------------')<br>
 query="INSERT INTO tablename (full_name,dob) valuesss(Bud,22);"<br>
 conn.execute(query)<br>
 
-print('--------------')<br>
 query="ALTER TABLE table_name RENAME COLUMN full_name TO name;"<br>
 conn.execute(query)<br>
 
 
-print('--------------')<br>
 query="ALTER TABLE table_name ADD COLUMN code;"<br>
 conn.execute(query)<br>
 
 
-print('--------------')<br>
 query="ALTER TABLE table_name DROP COLUMN code;"<br>
 conn.execute(query)<br>
 
 
-print('--------------')<br>
 query="UPDATE tablename set dob=23,name=sand where name=Bud"<br>
 conn.execute(query)<br>
 
 
-print('--------------')<br>
 query="select id,name,dob from tablename"<br>
 conn.execute(query)<br>
 
 
-print('--------------')<br>
 query="select id,name from tablename where name=sand"<br>
 conn.execute(query)<br>
 
 
-print('--------------')
-query="select * from tablename where name=sand"
-conn.execute(query)
+query="select * from tablename where name=sand"<br>
+conn.execute(query)<br>
 
 
-print('--------------')
-query="select * from tablename"
-conn.execute(query)
+query="select * from tablename"<br>
+conn.execute(query)<br>
 
