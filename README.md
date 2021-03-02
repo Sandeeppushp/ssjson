@@ -5,7 +5,7 @@ ssjson is JSON based python library with various json operation
 
 # USUAGE 
 
-#creating file
+#creating file<br>
 conn = connect("testing")
 
 #creating table
