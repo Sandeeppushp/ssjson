@@ -3,7 +3,7 @@ ssjson is JSON based python library with various json operation
 
 
 
-## USUAGE 
+# USUAGE 
 
 #creating file
 conn = connect("testing")
@@ -45,9 +45,9 @@ conn.select_all()
 
 
 
-## USUAGE Using SQL
+# USUAGE Using SQL
 
-# Below is the SQL query for all the operation happened above
+## Below is the SQL query for all the operation happened above
 
 
 conn = connect("testfile")
