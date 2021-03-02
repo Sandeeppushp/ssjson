@@ -3,7 +3,7 @@ ssjson is JSON based python library with various json operation
 
 
 
-# USUAGE 
+# USAGE 
 
 #creating file<br>
 conn = connect("testing")
