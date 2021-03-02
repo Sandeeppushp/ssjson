@@ -6,7 +6,7 @@ ssjson is JSON based python library with various json operation
 # USAGE 
 
 #creating file<br>
-conn = connect("testing")
+conn = ssjson.connect("testing")
 
 #creating table<br>
 conn.create([{'name':'','age':''}])
@@ -50,7 +50,7 @@ conn.select_all()
 ## Below is the SQL query for all the operation happened above
 
 
-conn = connect("testfile")<br>
+conn = ssjson.connect("testfile")<br>
 
 
 query="create table tablename(id text , name text , dob text)"<br>
