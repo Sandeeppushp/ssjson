@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="ssjson",
-    version="1.0.0",
+    version="1.0.15",
     description="ssjson is JSON based python library with various json operation",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -23,7 +23,8 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
+    packages=["ssjson"],
     python_requires='>=3.2',
     include_package_data=True,
-    install_requires=["pathlib"]
+    install_requires=["pathlib"],
 )
